@@ -10,12 +10,21 @@
     {% if mensagem %}
     <p>{{mensagem}}</p>
     {% endif %}
-    <div id="conselho">
-      <p>{{ advice }}</p>
-    </div>
-    <div class="image">
-      <img src="{{ url_for('static', filename='imagens/velho.png') }}" class="sabio-img" alt="velho">
-    </div>
 
+    <div class="wrapper">
+      <div class="titulo">Gerador de Conselhos</div> 
+      <div class="btn-idioma">
+        <button class="idioma active" id="us" onclick="traduzirPadrao()"><img src="{{ url_for('static', filename='imagens/usa.png') }}" alt="USA flag"></button>     
+        <button class="idioma" id="pt" onclick="traduzirConselho()"><img src="{{ url_for('static', filename='imagens/brasil.png') }}" alt="Brasil flag"></button>  
+      </div>
+      <div id="conselho" class="caixa-conselho">
+        <div class="texto" id="advice">{{ conselho }}</div>
+      </div>
+      <div class="botao">
+        <button class="btn" onclick="gerarConselho()">New Advice</button>
+      </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
+<!-- <a target="_blank" href="https://icons8.com/icon/fIgZUHgwc76e/usa">USA flag</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>-->
