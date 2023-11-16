@@ -1,4 +1,4 @@
-// Mudança do active entre os botoes de traduçao
+// Mudança do active entre os botoes de traduçao:
 document.querySelectorAll('.idioma').forEach(button => {
     button.addEventListener('click', () => {
         document.querySelectorAll('.idioma').forEach(btn => btn.classList.remove('active'));
@@ -29,7 +29,7 @@ function gerarConselho() {
     }
 };
 
-// Traduz o Conselho quando o botao de traduçao for clicado
+// Traduz o Conselho quando o botao de traduçao for clicado:
 function traduzirConselho() {
     const conselho = document.getElementById('conselho').textContent;
 
@@ -45,7 +45,7 @@ function traduzirConselho() {
         });
 }
 
-// Retorna o valor padrão(conselho em inglês)
+// Retorna o valor padrão(conselho em inglês):
 function traduzirPadrao() {
     document.getElementById('conselho').textContent = conselhoReal;
 }
