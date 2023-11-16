@@ -7,10 +7,10 @@ document.querySelectorAll('.idioma').forEach(button => {
 
 });
 
-// Armazena o valor de {{ conselho }} para exibi-lo quando necessario
+// Armazena o valor de {{ conselho }} para exibi-lo quando necessario:
 let conselhoReal = document.getElementById('conselho').textContent;
 
-// Gera um conselho aleatório conselho toda vez que o botão New Advice for clicado
+// Gera um conselho aleatório conselho toda vez que o botão New Advice for clicado:
 function gerarConselho() {
     fetch("/NovoConselho")
         .then(response => response.json())
@@ -18,6 +18,15 @@ function gerarConselho() {
             conselhoReal = data.conselho
             document.getElementById('conselho').textContent = conselhoReal;
         });
+
+    // Verifica de o botão de traduçao está ativo:
+    const botaoTraduçao = document.querySelector('.idioma.active');
+    if (botaoTraduçao && botaoTraduçao.id === 'pt') {
+        setTimeout(function () {
+            document.querySelector('#us').classList.add('active')
+            document.querySelector('#pt').classList.remove('active');
+        }, 750); // 750 milissegundos de delay 
+    }
 };
 
 // Traduz o Conselho quando o botao de traduçao for clicado
