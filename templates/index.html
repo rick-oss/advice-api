@@ -13,15 +13,20 @@
 
     <div class="wrapper">
       <div class="titulo">Gerador de Conselhos</div> 
-      <div class="btn-idioma">
-        <button class="idioma active" id="us" onclick="traduzirPadrao()"><img src="{{ url_for('static', filename='imagens/usa.png') }}" alt="USA flag"></button>     
-        <button class="idioma" id="pt" onclick="traduzirConselho()"><img src="{{ url_for('static', filename='imagens/brasil.png') }}" alt="Brasil flag"></button>  
-      </div>
+      <div class="painel-idioma">
+        <div class="btn-idioma">
+          <input type="radio" name="idioma" id="us" onclick="traduzirPadrao()" checked>     
+          <input type="radio" name="idioma" id="pt" onclick="traduzirConselho()"> 
+          <label for="us" class="idioma us"><img src="{{ url_for('static', filename='imagens/usa.png') }}"></label>
+          <label for="pt" class="idioma pt"><img src="{{ url_for('static', filename='imagens/brasil.png') }}"></label>
+          <div class="slider-tab"></div>
+        </div>
+      </div> 
       <div id="conselho" class="caixa-conselho">
         <div class="texto" id="advice">{{ conselho }}</div>
       </div>
       <div class="botao">
-        <button class="btn" onclick="gerarConselho()">New Advice</button>
+        <input type="submit" value="New Advice" class="btn" onclick="gerarConselho()">
       </div>
     </div>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
