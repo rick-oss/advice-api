@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html,
 body {
     width: 100%;
@@ -11,7 +17,7 @@ body {
     width: 420px;
     padding: 20px;
     text-align: center;
-    border-radius: 20px;
+    border-radius: 10px;
     background: #010118;
     color: white;
     border: 1px solid rgb(4, 87, 122);
@@ -24,28 +30,57 @@ body {
 
 }
 
+.wrapper .painel-idioma {
+    width: 100%;
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+}
+
 .wrapper .btn-idioma {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    margin-top: 20px;
+    width: 60%;
+    border: 1px solid rgb(4, 87, 122);
+    border-radius: 25px;
 }
 
 .btn-idioma .idioma {
     height: 70px;
-    width: 70px;
+    width: 50%;
+    line-height: 105px;
     cursor: pointer;
-    background-color: #010118;
+    background: none;
     border: none;
+    z-index: 1;
+    transition: all 0.6s ease;
 }
 
-.btn-idioma .idioma:hover {
-    border-bottom: 1px solid rgb(4, 87, 122);
+.painel-idioma .slider-tab {
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    left: 0;
+    border-radius: 25px;
+    z-index: 0;
+    background: -webkit-linear-gradient(left, #003366, #004080, #0059b3, #0073e6);
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.263, 1.55);
 }
 
-.btn-idioma .idioma.active {
-    border-bottom: 1px solid rgb(4, 87, 122);
+input[type="radio"] {
+    display: none;
+}
+
+#pt:checked ~ .slider-tab {
+    left: 50%;
+}
+
+#pt:checked ~ label.pt,
+#us:checked ~ label.us {
+    cursor: default;
+    user-select: none;
 }
 
 /* Estilizaçao do Conselho gerado */

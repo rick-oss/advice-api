@@ -1,14 +1,7 @@
-// Mudança do active entre os botoes de traduçao:
-document.querySelectorAll('.idioma').forEach(button => {
-    button.addEventListener('click', () => {
-        document.querySelectorAll('.idioma').forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-    });
-
-});
-
 // Armazena o valor de {{ conselho }} para exibi-lo quando necessario:
 let conselhoReal = document.getElementById('conselho').textContent;
+let sliderTab = document.querySelector('div.slider-tab');
+let radioPt = document.getElementById('pt')
 
 // Gera um conselho aleatório conselho toda vez que o botão New Advice for clicado:
 function gerarConselho() {
@@ -17,16 +10,12 @@ function gerarConselho() {
         .then(data => {
             conselhoReal = data.conselho
             document.getElementById('conselho').textContent = conselhoReal;
-        });
 
-    // Verifica de o botão de traduçao está ativo:
-    const botaoTraduçao = document.querySelector('.idioma.active');
-    if (botaoTraduçao && botaoTraduçao.id === 'pt') {
-        setTimeout(function () {
-            document.querySelector('#us').classList.add('active')
-            document.querySelector('#pt').classList.remove('active');
-        }, 750); // 750 milissegundos de delay 
-    }
+            let estaMarcado = radioPt.checked
+            if (estaMarcado) {
+                sliderTab.style.left = '0'
+            }
+        });
 };
 
 // Traduz o Conselho quando o botao de traduçao for clicado:
