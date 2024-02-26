@@ -73,11 +73,11 @@ input[type="radio"] {
     display: none;
 }
 
-#pt:checked ~ .slider-tab {
-    left: 50%;
+#pt:checked ~ label.pt {
+    cursor: default;
+    user-select: none;
 }
 
-#pt:checked ~ label.pt,
 #us:checked ~ label.us {
     cursor: default;
     user-select: none;

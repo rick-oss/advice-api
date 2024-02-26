@@ -1,9 +1,8 @@
-// Armazena o valor de {{ conselho }} para exibi-lo quando necessario:
+// Obtém a div id=conselho e Armazena o valor de {{ conselho }} para exibi-lo quando necessario:
 let conselhoReal = document.getElementById('conselho').textContent;
 let sliderTab = document.querySelector('div.slider-tab');
-let radioPt = document.getElementById('pt')
 
-// Gera um conselho aleatório conselho toda vez que o botão New Advice for clicado:
+// Gera um conselho aleatório toda vez que o botão New Advice for clicado:
 function gerarConselho() {
     fetch("/NovoConselho")
         .then(response => response.json())
@@ -11,8 +10,12 @@ function gerarConselho() {
             conselhoReal = data.conselho
             document.getElementById('conselho').textContent = conselhoReal;
 
-            let estaMarcado = radioPt.checked
-            if (estaMarcado) {
+            let radioPt = document.getElementById('pt');
+            let radioUS = document.getElementById('us');
+
+            if (radioPt.checked) {
+                radioUS.checked = true
+                radioPt.checked = false
                 sliderTab.style.left = '0'
             }
         });
@@ -20,21 +23,21 @@ function gerarConselho() {
 
 // Traduz o Conselho quando o botao de traduçao for clicado:
 function traduzirConselho() {
-    const conselho = document.getElementById('conselho').textContent;
-
     fetch("TraduzirConselho", {
         method: "POST",
-        body: new URLSearchParams({ 'advice': conselho }),
+        body: new URLSearchParams({ 'advice': conselhoReal }),
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     })
         .then(response => response.json())
         .then(data => {
             const traduçao = data.traduçao;
             document.getElementById('conselho').textContent = traduçao;
+            sliderTab.style.left = '50%'
         });
-}
+};
 
 // Retorna o valor padrão(conselho em inglês):
 function traduzirPadrao() {
     document.getElementById('conselho').textContent = conselhoReal;
-}
+    sliderTab.style.left = '0'
+};
